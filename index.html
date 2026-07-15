@@ -175,6 +175,7 @@
     color: var(--navy-deep);
     box-shadow: 0 6px 16px rgba(201,154,60,0.35);
   }
+  .btn-gold:hover{transform: translateY(-1px);}
   .btn-row{ text-align:right; margin-top: 22px; }
   .error-msg{
     color: var(--danger);
@@ -523,7 +524,7 @@ const QUESTION_BANK_FIL = [
   q:'Ano ang pangunahing pagkakaiba ng kabihasnang Minoan kumpara sa Mesopotamia, Indus Valley, Egypt, at Shang?',
   options:[
     {text:'Nakasentro sa dagat ang kabuhayan ng Minoan, samantalang nakasalalay sa ilog ang iba.', correct:true},
-    {text:'Nakasentro sa relihiyon ang Minoan, samantalang nakasalalay sa hukbo ang iba.', correct:false},
+    {text:'Nakasentro sa relihiyon ang Minoan, samantalang nakasalalay sa lakas ng kanilang hukbong sandatahan at mga mersenaryo ang iba upang mapanatili ang kapangyarihan.', correct:false},
     {text:'Nakasentro sa pagmimina ang Minoan, samantalang nakasalalay sa kalakalan ang iba.', correct:false},
     {text:'Nakasentro sa kabundukan ang Minoan, samantalang nakasalalay sa disyerto ang iba.', correct:false},
   ]
@@ -532,7 +533,7 @@ const QUESTION_BANK_FIL = [
   type:'mcq', topic:'Minoan',
   q:'Ano ang nagbibigay-patunay sa kagalingan ng mga Minoan sa larangan ng sining at disenyo?',
   options:[
-    {text:'Ang pagtatayo nila ng templo sa bawat lungsod na kanilang nasakop.', correct:false},
+    {text:'Ang pagtatayo nila ng naglalakihang mga templo at dambana sa bawat lungsod-estado na kanilang nasakop sa buong rehiyon ng Mediteraneo.', correct:false},
     {text:'Ang paggamit nila ng selyo na may disenyo sa kanilang pakikipagkalakalan.', correct:true},
     {text:'Ang pagsasagawa nila ng ritwal na paghahandog ng hayop sa mga diyos.', correct:false},
     {text:'Ang pagpapatayo nila ng malalaking pader upang ipagtanggol ang isla.', correct:false},
@@ -542,7 +543,7 @@ const QUESTION_BANK_FIL = [
   type:'mcq', topic:'Minoan',
   q:'Bakit naging mahalaga ang Crete sa kalakalan noong panahon ng mga Minoan?',
   options:[
-    {text:'Sapagkat malapit ito sa mga ilog na Nile at Tigris na daanan ng mga mangangalakal.', correct:false},
+    {text:'Sapagkat malapit ito sa mga lambak-ilog ng Nile, Tigris, at Euphrates na pangunahing daanan ng lahat ng mga sinaunang mangangalakal at manlalakbay.', correct:false},
     {text:'Sapagkat doon unang nanirahan ang mga Aryan bago pa man kumalat sa Europa.', correct:false},
     {text:'Sapagkat ito ang lokasyon kung saan itinatag ang unang lungsod-estado sa daigdig.', correct:false},
     {text:'Sapagkat estratehiko ang lokasyon nito sa dagat kaya nagsilbi itong sentro ng ugnayan.', correct:true},
@@ -553,7 +554,7 @@ const QUESTION_BANK_FIL = [
   q:'Ano ang pinaniniwalaang malaking dahilan ng pagbagsak ng kabihasnang Minoan?',
   options:[
     {text:'Ang matinding pagsabog ng bulkan na nakaapekto sa kanilang isla at ekonomiya.', correct:true},
-    {text:'Ang biglaang pagtaas ng buwis na ipinataw sa mga karaniwang mamamayan.', correct:false},
+    {text:'Ang biglaang pagtaas ng buwis at sapilitang pagpapatrabaho na ipinataw ng pamahalaan sa mga karaniwang mamamayan na nagdulot ng malawakang pag-aalsa.', correct:false},
     {text:'Ang pagkakahati-hati ng kapangyarihan sa maraming munting nayon.', correct:false},
     {text:'Ang pagkasira ng kanilang sistema ng irigasyon sa pagsasaka.', correct:false},
   ]
@@ -562,7 +563,7 @@ const QUESTION_BANK_FIL = [
   type:'mcq', topic:'Minoan',
   q:'Kanino direktang ipinangalan ang kabihasnang Minoan?',
   options:[
-    {text:'Kay Zeus, ang pinuno ng mga diyos sa mitolohiyang Griyego.', correct:false},
+    {text:'Kay Zeus, na itinuturing na pinakamataas at pinakamakapangyarihang pinuno ng mga diyos at diyosa sa buong mitolohiyang Griyego.', correct:false},
     {text:'Kay Agamemnon, ang haring pinuno ng mga Griyego sa Trojan War.', correct:false},
     {text:'Kay Haring Minos, ang alamat na pinuno ng sinaunang Crete.', correct:true},
     {text:'Sa mga Dorian, ang pangkat na sumakop sa Gresya matapos ang Mycenaean.', correct:false},
@@ -575,7 +576,7 @@ const QUESTION_BANK_FIL = [
   options:[
     {text:'Upang mas madaling makapangalap ng pagkain mula sa kabundukan.', correct:false},
     {text:'Upang higit na mapangalagaan at maprotektahan ang kanilang pamayanan.', correct:true},
-    {text:'Upang mas malapit sila sa mga templong itinayo para sa kanilang mga diyos.', correct:false},
+    {text:'Upang mas madaling makapangalap at makapag-imbak ng mga sariwang pagkain, prutas, at mga pananim mula sa matatayog na kabundukan sa paligid.', correct:false},
     {text:'Upang mas maganda ang tanawin ng kanilang hari mula sa palasyo.', correct:false},
   ]
 },
@@ -585,7 +586,7 @@ const QUESTION_BANK_FIL = [
   options:[
     {text:'Handa silang harapin ang banta ng digmaan o pananakop sa kanilang lugar.', correct:true},
     {text:'Sagrado sa kanila ang mga bato kaya ginawa nila itong dambana.', correct:false},
-    {text:'Maunlad sila sa agrikultura kaya kailangan ng malaining imbakan.', correct:false},
+    {text:'Maunlad at sopistikado ang kanilang sistema sa agrikultura kaya kinailangan nila ng napakalaking imbakan para sa mga labis na ani ng trigo.', correct:false},
     {text:'Malapit sila sa dagat kaya kailangan ng harang sa alon.', correct:false},
   ]
 },
@@ -594,7 +595,7 @@ const QUESTION_BANK_FIL = [
   q:'Paano naipapakita ang impluwensya ng mga Minoan sa mga Mycenaean?',
   options:[
     {text:'Sa pamamagitan ng paggamit nila ng mga selyong may disenyong katulad ng Minoan.', correct:true},
-    {text:'Sa pamamagitan ng pagtatayo nila ng piramide na kagaya ng sa Egypt.', correct:false},
+    {text:'Sa pamamagitan ng pagtatayo nila ng mga nagtataasang piramide at monumentong bato na katulad na katulad ng mga estruktura sa sinaunang Egypt.', correct:false},
     {text:'Sa pamamagitan ng paggamit nila ng kalendaryong 365 araw ang haba.', correct:false},
     {text:'Sa pamamagitan ng pagsamba nila sa diyos na si Kukulkan.', correct:false},
   ]
@@ -603,7 +604,7 @@ const QUESTION_BANK_FIL = [
   type:'mcq', topic:'Mycenaean',
   q:'Ano ang naipapakita ng matibay na tanggulan at organisadong lungsod-estado ng mga Mycenaean?',
   options:[
-    {text:'Sila ay isang mapayapang lipunan na walang kinatatakutang kaaway.', correct:false},
+    {text:'Sila ay isang mapayapa at nakabukod na lipunan na walang anumang kinatatakutang kaaway o banta ng pananakop mula sa ibang mga tribo.', correct:false},
     {text:'Wala silang katutubong sining at kultura na maituturing na sarili.', correct:false},
     {text:'Maayos ang kanilang pamamahala at ugnayang panlipunan sa isa\'t isa.', correct:true},
     {text:'Nakasentro lamang sa pagsasaka ang buong lipunang Mycenaean.', correct:false},
@@ -613,7 +614,7 @@ const QUESTION_BANK_FIL = [
   type:'mcq', topic:'Mycenaean',
   q:'Bakit itinuturing na mahalaga si Homer sa pag-aaral ng panahong Mycenaean?',
   options:[
-    {text:'Sapagkat siya ang unang haring nagtayo ng lungsod ng Mycenae.', correct:false},
+    {text:'Sapagkat siya ang unang dakila at makapangyarihang haring nagtayo at nagpalawak ng tanyag na lungsod ng Mycenae sa sinaunang Gresya.', correct:false},
     {text:'Sapagkat isinulat niya ang Iliad na naglalaman ng mga kwento tungkol sa panahong ito.', correct:true},
     {text:'Sapagkat siya ang gumawa ng sistemang pagsulat na Linear B.', correct:false},
     {text:'Sapagkat siya ang pinuno ng mga Griyego noong Trojan War.', correct:false},
@@ -624,7 +625,7 @@ const QUESTION_BANK_FIL = [
   type:'mcq', topic:'Olmec',
   q:'Bakit tinatawag na "Mother Culture" ang mga Olmec?',
   options:[
-    {text:'Sapagkat sila ang may pinakamaraming lungsod sa buong Mesoamerica.', correct:false},
+    {text:'Sapagkat sila ang nagmamay-ari ng pinakamaraming lungsod at pinakamalaking sentro ng populasyon sa buong rehiyon ng Mesoamerica noong panahong iyon.', correct:false},
     {text:'Sapagkat sila ang unang gumawa ng mga palasyo sa kasaysayan.', correct:false},
     {text:'Sapagkat naimpluwensiyahan nila ang mga kulturang sumunod sa kanila.', correct:true},
     {text:'Sapagkat sila ang may pinakamalawak na sakop na lupain noon.', correct:false},
@@ -634,7 +635,7 @@ const QUESTION_BANK_FIL = [
   type:'mcq', topic:'Olmec',
   q:'Paano nakatulong ang kalendaryo ng mga Olmec sa kanilang pamumuhay?',
   options:[
-    {text:'Bilang batayan sa disenyo ng kanilang mga dambuhalang estruktura.', correct:false},
+    {text:'Bilang pangunahing batayan at pundasyon sa masalimuot na disenyo at pagtatayo ng kanilang mga dambuhalang estrukturang bato at piramide.', correct:false},
     {text:'Bilang gabay sa pagtukoy ng tamang panahon ng pagtatanim.', correct:true},
     {text:'Upang matukoy kung kailan ipapatupad ang mga batas ng hari.', correct:false},
     {text:'Upang maitala ang mahahalagang araw ng kanilang mga kapistahan.', correct:false},
@@ -645,7 +646,7 @@ const QUESTION_BANK_FIL = [
   q:'Alin sa mga sumusunod ang malinaw na halimbawa ng ritwal sa kulturang Olmec?',
   options:[
     {text:'Ang pagpapatayo ng silid-dalanginan para sa kanilang mga diyos.', correct:false},
-    {text:'Ang pag-aalay ng hayop sa mga ilog tuwing panahon ng tagtuyot.', correct:false},
+    {text:'Ang malawakang pag-aalay ng mga kakaibang hayop at mamahaling hiyas sa mga sagradong ilog tuwing sasapit ang matinding panahon ng tagtuyot.', correct:false},
     {text:'Ang paggamit ng pok-a-tok bilang bahagi ng seremonyang panrelihiyon.', correct:true},
     {text:'Ang pagpapalayas ng masasamang espiritu sa pamamagitan ng dasal.', correct:false},
   ]
@@ -654,7 +655,7 @@ const QUESTION_BANK_FIL = [
   type:'mcq', topic:'Olmec',
   q:'Bakit itinuturing na kahanga-hanga ang pagbuo ng colossal heads ng mga Olmec noong sinaunang panahon?',
   options:[
-    {text:'Sapagkat ito ay nilikha ng isang pinunong may pambihirang lakas ng katawan.', correct:false},
+    {text:'Sapagkat ito ay personal na nilikha at inukit ng isang nag-iisang pinunong may pambihira at mahiwagang lakas ng katawan ayon sa kanilang alamat.', correct:false},
     {text:'Sapagkat naisakatuparan ito kahit wala silang modernong kasangkapan.', correct:true},
     {text:'Sapagkat ginamitan nila ito ng makabagong kagamitan at teknolohiya.', correct:false},
     {text:'Sapagkat ang mga bato ay inukit sa lugar na malapit sa kanilang tirahan.', correct:false},
@@ -664,7 +665,7 @@ const QUESTION_BANK_FIL = [
   type:'mcq', topic:'Olmec',
   q:'Anong aspeto ng katalinuhan ng mga Olmec ang naipapakita ng Cascajal Block?',
   options:[
-    {text:'Ang kanilang kaalaman sa pagpaplano ng lungsod at sistemang agrikultural.', correct:false},
+    {text:'Ang kanilang malawak na kaalaman sa sopistikadong pagpaplano ng mga lungsod, kalsada, at modernong sistemang agrikultural sa kagubatan.', correct:false},
     {text:'Ang kanilang kasanayan sa pagsasagawa ng seremonyang panrelihiyon.', correct:false},
     {text:'Ang kanilang kakayahan sa pagdidisenyo ng matitibay na estruktura.', correct:false},
     {text:'Ang kanilang kakayahang ipahayag ang kaisipan sa pamamagitan ng simbolo.', correct:true},
@@ -676,7 +677,7 @@ const QUESTION_BANK_FIL = [
   q:'Ano ang tawag sa 365-araw na kalendaryo na ginamit ng mga Maya?',
   options:[
     {text:'Ang kalendaryong tinatawag na Haab.', correct:true},
-    {text:'Ang kalendaryong tinatawag na Tzolk\'in.', correct:false},
+    {text:'Ang komplikado at sagradong kalendaryong ritwal ng mga pari na tinatawag naman sa pangalang Tzolk\'in.', correct:false},
     {text:'Ang kalendaryong tinatawag na Codex.', correct:false},
     {text:'Ang kalendaryong tinatawag na Tikal.', correct:false},
   ]
@@ -686,7 +687,7 @@ const QUESTION_BANK_FIL = [
   q:'Sino sa mga sumusunod ang tinaguriang "Feathered Serpent God" ng mga Maya?',
   options:[
     {text:'Ang diyos na kilala sa tawag na Chaac.', correct:false},
-    {text:'Ang diyos na kilala sa tawag na Itzamna.', correct:false},
+    {text:'Ang makapangyarihang diyos ng kalangitan at karunungan na kilala ng lahat sa tawag na Itzamna.', correct:false},
     {text:'Ang diyos na kilala sa tawag na Kukulkan.', correct:true},
     {text:'Ang diyos na kilala sa tawag na Ah Puch.', correct:false},
   ]
@@ -697,7 +698,7 @@ const QUESTION_BANK_FIL = [
   options:[
     {text:'Ang elementong tubig o ulan na mahalaga sa pagsasaka.', correct:true},
     {text:'Ang elementong apoy na ginagamit sa mga seremonya.', correct:false},
-    {text:'Ang elementong hangin na dala ng bagyo sa dagat.', correct:false},
+    {text:'Ang mapanirang elementong hangin na nagdadala ng malalakas na bagyo at unos sa mga baybaying dagat ng kanilang teritoryo.', correct:false},
     {text:'Ang elementong lupa na siyang batayan ng agrikultura.', correct:false},
   ]
 },
@@ -705,7 +706,7 @@ const QUESTION_BANK_FIL = [
   type:'mcq', topic:'Maya',
   q:'Kung ginamit ng mga Maya ang mga glyph para sa komunikasyon, ano ang katumbas nito sa kasalukuyang panahon?',
   options:[
-    {text:'Katulad ng mga batas at alituntunin na ipinapatupad ng gobyerno.', correct:false},
+    {text:'Katulad ng mga pormal na batas, kautusan, at alituntunin ng pamahalaan na mahigpit na ipinapatupad ng mga opisyal sa bawat mamamayan.', correct:false},
     {text:'Katulad ng mga digital emoji at abbreviation na ginagamit sa pagmemensahe.', correct:true},
     {text:'Katulad ng mga resetang pagkain na isinusulat sa aklat.', correct:false},
     {text:'Katulad ng mga liham na isinusulat ng kabataan sa kanilang magulang.', correct:false},
@@ -715,7 +716,7 @@ const QUESTION_BANK_FIL = [
   type:'mcq', topic:'Maya',
   q:'Bakit sinasabing mataas ang antas ng kaalaman sa agham ng mga Maya?',
   options:[
-    {text:'Sapagkat umaasa lamang sila sa sinasabi ng mga paring nangunguna sa kanila.', correct:false},
+    {text:'Sapagkat bulag silang umaasa at sumusunod lamang sa bawat sinasabi at ipinag-uutos ng mga paring nangunguna sa kanilang pamayanan.', correct:false},
     {text:'Sapagkat naiuugnay nila ang kaalaman sa astronomiya sa kanilang kalendaryo.', correct:true},
     {text:'Sapagkat gusto nilang kilalanin ng ibang lahi bilang pinakamatalino.', correct:false},
     {text:'Sapagkat mayroon silang mga makabagong kagamitan noong panahong iyon.', correct:false},
@@ -728,7 +729,7 @@ const QUESTION_BANK_FIL = [
   options:[
     {text:'Sapagkat nagpapalakas ito ng ulan sa panahon ng pagtatanim.', correct:false},
     {text:'Sapagkat nakapagpapalawak ito ng lupang maaaring tamnan ng mga pananim.', correct:true},
-    {text:'Sapagkat nagbibigay ito ng masaganang ani kahit sa tuyong lupa.', correct:false},
+    {text:'Sapagkat may kakayahan itong magdulot ng masaganang ani ng mga pangunahing produkto kahit na itanim ito sa tuyo at baog na mga lupain.', correct:false},
     {text:'Sapagkat nagpapalalim ito sa ilog na ginagamit sa irigasyon.', correct:false},
   ]
 },
@@ -739,7 +740,7 @@ const QUESTION_BANK_FIL = [
     {text:'Bilang pang-ukit sa dingding ng kanilang mga bahay.', correct:false},
     {text:'Bilang panahi ng kanilang mga kasuotan sa araw-araw.', correct:false},
     {text:'Bilang panghiwa sa mga bagay-bagay tulad ng sa kanilang mga ritwal.', correct:true},
-    {text:'Bilang panggupit ng mga halamang gamot na kanilang tinatanim.', correct:false},
+    {text:'Bilang pangunahing materyales sa masining na pang-ukit at pagdidisenyo sa mga dingding ng palasyo ng kanilang emperador.', correct:false},
   ]
 },
 {
@@ -748,7 +749,7 @@ const QUESTION_BANK_FIL = [
   options:[
     {text:'Ang salitang "chipotle" na ginagamit sa pagluluto.', correct:false},
     {text:'Ang salitang "chayote" na tumutukoy sa isang uri ng gulay.', correct:false},
-    {text:'Ang salitang "chimichurri" na tumutukoy sa isang uri ng sarsa.', correct:false},
+    {text:'Ang salitang "chimichurri" na tumutukoy sa isang tanyag na uri ng maasim at maanghang na sarsa na ginagamit sa mga karneng inihaw.', correct:false},
     {text:'Ang salitang "chocolate" na kilala sa buong mundo sa ngayon.', correct:true},
   ]
 },
@@ -757,7 +758,7 @@ const QUESTION_BANK_FIL = [
   q:'Bakit hindi agad nilabanan ni Emperador Moctezuma II si Hernan Cortes nang dumating ito sa Tenochtitlan?',
   options:[
     {text:'Sapagkat inakala nilang si Cortes ay ang bumabalik na diyos na si Quetzalcoatl.', correct:true},
-    {text:'Sapagkat tinulungan ni Cortes ang mga Aztec laban sa kanilang mga kalaban.', correct:false},
+    {text:'Sapagkat aktibong tinulungan at pinrotektahan ni Cortes ang mga Aztec laban sa mapang-aping pagsalakay ng kanilang mga katutubong kaaway.', correct:false},
     {text:'Sapagkat nagdala si Cortes ng gintong alay para sa emperador.', correct:false},
     {text:'Sapagkat nagpakilala si Cortes bilang alyado ng diyos na si Tlaloc.', correct:false},
   ]
@@ -766,7 +767,7 @@ const QUESTION_BANK_FIL = [
   type:'mcq', topic:'Aztec',
   q:'Bakit sina Huitzilopochtli at Tlaloc ang piniling mga diyos para sa Templo Mayor ng mga Aztec?',
   options:[
-    {text:'Sapagkat sila ang tagapangalaga ng gabi at apoy sa palibot ng mga bundok.', correct:false},
+    {text:'Sapagkat sila ang itinuturing na opisyal na tagapangalaga ng kadiliman ng gabi at sagradong apoy sa palibot ng mga aktibong bundok.', correct:false},
     {text:'Sapagkat sila ay kumakatawan sa digmaan at sa ulan, dalawang bagay na mahalaga sa kanilang kaligtasan.', correct:true},
     {text:'Sapagkat sila lamang ang mga diyos na naniniwala ang mga pari sa panalangin.', correct:false},
     {text:'Sapagkat sila ang tagapangalaga ng hangin at liwanag ng mga mandirigma.', correct:false},
@@ -779,7 +780,7 @@ const QUESTION_BANK_FIL = [
   options:[
     {text:'Siya ay tinatawag na Sapa Inca.', correct:true},
     {text:'Siya ay tinatawag na Chasqui.', correct:false},
-    {text:'Siya ay tinatawag na Halach Uinic.', correct:false},
+    {text:'Siya ay tinatawag na Halach Uinic, na siyang may kabuuang kontrol sa pamamahala ng mga lungsod.', correct:false},
     {text:'Siya ay tinatawag na Tlacaelel.', correct:false},
   ]
 },
@@ -787,7 +788,7 @@ const QUESTION_BANK_FIL = [
   type:'mcq', topic:'Inca',
   q:'Ano ang tawag sa buong Imperyo ng mga Inca?',
   options:[
-    {text:'Ito ay tinatawag na Collasuyu.', correct:false},
+    {text:'Ito ay tinatawag na Collasuyu, ang pinakamalaking rehiyon na matatagpuan sa timog na bahagi ng teritoryo.', correct:false},
     {text:'Ito ay tinatawag na Tahuantinsuyu.', correct:true},
     {text:'Ito ay tinatawag na Antisuyu.', correct:false},
     {text:'Ito ay tinatawag na Cuzco.', correct:false},
@@ -797,7 +798,7 @@ const QUESTION_BANK_FIL = [
   type:'mcq', topic:'Inca',
   q:'Ano ang Machu Picchu na kilala bilang "Lost City of the Incas"?',
   options:[
-    {text:'Ito ay ang kabiserang lungsod kung saan nakatira ang Sapa Inca.', correct:false},
+    {text:'Ito ay ang opisyal at pangunahing kabiserang lungsod ng imperyo kung saan permanenteng nakatira at namumuno ang Sapa Inca.', correct:false},
     {text:'Ito ay ang malaking dambana kung saan ginaganap ang mga seremonya.', correct:false},
     {text:'Ito ay ang sinaunang lungsod na matatagpuan sa tuktok ng kabundukan.', correct:true},
     {text:'Ito ay ang lungsod kung saan itinuturing na ipinanganak ang unang Inca.', correct:false},
@@ -808,7 +809,7 @@ const QUESTION_BANK_FIL = [
   q:'Ano ang quipu na ginamit ng mga sinaunang Inca?',
   options:[
     {text:'Isang sistema ng pagtatala gamit ang mga buhol at tali para sa bilang at mensahe.', correct:true},
-    {text:'Isang uri ng kalsadang bato na dumadaan sa buong imperyo.', correct:false},
+    {text:'Isang mahaba, malawak, at matibay na uri ng kalsadang yari sa mga pinatag na bato na dumadaan sa kabuuan ng masukal na imperyo.', correct:false},
     {text:'Isang klaseng damit na suot lamang ng mga maharlika.', correct:false},
     {text:'Isang uri ng armas na ginamit sa pagdepensa ng imperyo.', correct:false},
   ]
@@ -817,12 +818,13 @@ const QUESTION_BANK_FIL = [
   type:'mcq', topic:'Inca',
   q:'Sino ang Espanyol na mananakop na responsable sa pagbagsak ng Imperyong Inca noong 1532?',
   options:[
-    {text:'Siya ay si Hernan Cortes, ang mananakop ng Tenochtitlan.', correct:false},
+    {text:'Siya ay si Hernan Cortes, ang kilalang malupit na mananakop na nagpabagsak naman sa kabiserang lungsod ng Tenochtitlan.', correct:false},
     {text:'Siya ay si Francisco Pizarro, na sumakop sa imperyo noong taong iyon.', correct:true},
     {text:'Siya ay si Manco Capac, ang itinuturing na unang emperador.', correct:false},
     {text:'Siya ay si Tlacaelel, ang tagapayo ng mga Aztec.', correct:false},
   ]
-},
+}
+,
 // ---------------- FILL IN THE BLANK (FIL) ----------------
 {
   type:'fill', topic:'Minoan',
@@ -1133,7 +1135,7 @@ const QUESTION_BANK_ENG = [
   q:'What is Machu Picchu, famously known as the "Lost City of the Incas"?',
   options:[
     {text:'It was the capital city where the Sapa Inca resided.', correct:false},
-    {text:'It was a grand shrine where major ceremonies were held.', correct:true}, // wait, C was ancient city, let's keep exact translation
+    {text:'It was a grand shrine where major ceremonies were held.', correct:false},
     {text:'It was an ancient city situated high on a mountain ridge.', correct:true},
     {text:'It was the city where the first Inca was believed to be born.', correct:false},
   ]
