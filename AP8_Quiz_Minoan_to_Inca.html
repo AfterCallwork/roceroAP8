@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="fil">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AP8 Quiz | Minoan - Mycenaean - Olmec - Maya - Aztec - Inca</title>
+<style>
+  :root{
+    --navy:#0b2545;
+    --navy-deep:#081b34;
+    --teal:#1b7a72;
+    --teal-light:#2fa89c;
+    --gold:#c99a3c;
+    --gold-light:#e8c473;
+    --cream:#f7f3e9;
+    --paper:#fffdf8;
+    --ink:#122032;
+    --muted:#5c6b7a;
+    --danger:#b0453d;
+    --good:#1b7a4a;
+    --radius:14px;
+    --shadow: 0 10px 30px rgba(8,27,52,0.18);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family: 'Georgia', 'Iowan Old Style', serif;
+    background:
+      radial-gradient(circle at 15% 10%, rgba(201,154,60,0.10), transparent 40%),
+      radial-gradient(circle at 85% 90%, rgba(27,122,114,0.14), transparent 45%),
+      var(--navy-deep);
+    color: var(--ink);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    padding: 28px 14px 60px;
+  }
+  .app{
+    width:100%;
+    max-width: 720px;
+  }
+  .masthead{
+    text-align:center;
+    color: var(--cream);
+    margin-bottom: 18px;
+  }
+  .masthead .glyph-row{
+    letter-spacing: 8px;
+    font-size: 13px;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .masthead h1{
+    font-family: 'Trajan Pro','Cinzel','Georgia',serif;
+    font-size: 26px;
+    margin: 0 0 4px;
+    letter-spacing: 1px;
+  }
+  .masthead p{
+    margin:0;
+    font-size: 13px;
+    color: #b9c6d4;
+  }
+  .card{
+    background: var(--paper);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 30px 26px;
+    border: 1px solid rgba(201,154,60,0.35);
+    position:relative;
+    overflow:hidden;
+  }
+  .card::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:6px;
+    background: linear-gradient(90deg, var(--gold), var(--teal), var(--navy));
+  }
+  /* ---- Landing screen ---- */
+  .field-label{
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    margin-bottom: 6px;
+    display:block;
+  }
+  input[type="text"]{
+    width:100%;
+    padding: 12px 14px;
+    font-size: 16px;
+    border: 2px solid #d8cfb8;
+    border-radius: 8px;
+    font-family: inherit;
+    background: var(--cream);
+    color: var(--ink);
+  }
+  input[type="text"]:focus{
+    outline:none;
+    border-color: var(--teal);
+  }
+  .coverage-box{
+    margin-top: 18px;
+    background: rgba(27,122,114,0.07);
+    border-left: 3px solid var(--teal);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 13.5px;
+    color: var(--navy);
+  }
+  .coverage-box b{color: var(--teal);}
+  .btn{
+    display:inline-block;
+    border:none;
+    cursor:pointer;
+    font-family: inherit;
+    font-weight:bold;
+    font-size: 15px;
+    padding: 13px 26px;
+    border-radius: 999px;
+    letter-spacing: 0.5px;
+    transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+  }
+  .btn-primary{
+    background: linear-gradient(135deg, var(--teal-light), var(--teal));
+    color: white;
+    box-shadow: 0 6px 16px rgba(27,122,114,0.35);
+  }
+  .btn-primary:hover{transform: translateY(-1px);}
+  .btn-primary:disabled{opacity:0.45; cursor:not-allowed; transform:none;}
+  .btn-gold{
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    color: var(--navy-deep);
+    box-shadow: 0 6px 16px rgba(201,154,60,0.35);
+  }
+  .btn-row{ text-align:right; margin-top: 22px; }
+  .error-msg{
+    color: var(--danger);
+    font-size: 13px;
+    margin-top: 8px;
+    display:none;
+  }
+
+  /* ---- Quiz screen ---- */
+  .progress-wrap{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .progress-track{
+    flex:1;
+    height: 8px;
+    border-radius: 999px;
+    background: #e6ddc4;
+    overflow:hidden;
+  }
+  .progress-fill{
+    height:100%;
+    background: linear-gradient(90deg, var(--gold), var(--teal));
+    border-radius: 999px;
+    transition: width .3s ease;
+    width:0%;
+  }
+  .progress-label{
+    font-size: 12px;
+    color: var(--muted);
+    white-space:nowrap;
+    font-family: Arial, sans-serif;
+  }
+  .q-type-tag{
+    display:inline-block;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: Arial, sans-serif;
+    font-weight:bold;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+  }
+  .tag-mcq{ background: rgba(27,122,114,0.12); color: var(--teal); }
+  .tag-fill{ background: rgba(201,154,60,0.18); color: #8a6a1f; }
+  .q-topic{
+    font-size: 11.5px;
+    color: var(--gold);
+    font-family: Arial, sans-serif;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .q-text{
+    font-size: 19px;
+    line-height:1.45;
+    color: var(--navy-deep);
+    margin: 0 0 20px;
+  }
+  .options{
+    display:flex;
+    flex-direction:column;
+    gap: 10px;
+  }
+  .option{
+    display:flex;
+    align-items:flex-start;
+    gap: 12px;
+    padding: 13px 15px;
+    border: 2px solid #e2d9c2;
+    border-radius: 10px;
+    cursor:pointer;
+    background: var(--cream);
+    font-size: 15px;
+    line-height:1.4;
+    transition: border-color .12s ease, background .12s ease;
+  }
+  .option:hover{ border-color: var(--teal-light); }
+  .option .letter{
+    flex-shrink:0;
+    width: 26px; height:26px;
+    border-radius:50%;
+    background: white;
+    border: 2px solid #cfc4a3;
+    display:flex; align-items:center; justify-content:center;
+    font-family: Arial, sans-serif;
+    font-weight:bold;
+    font-size: 13px;
+    color: var(--navy);
+  }
+  .option.selected{
+    border-color: var(--teal);
+    background: rgba(27,122,114,0.10);
+  }
+  .option.selected .letter{ background: var(--teal); color:white; border-color:var(--teal);}
+  .option.correct{
+    border-color: var(--good);
+    background: rgba(27,122,74,0.12);
+  }
+  .option.correct .letter{ background: var(--good); color:white; border-color:var(--good);}
+  .option.wrong{
+    border-color: var(--danger);
+    background: rgba(176,69,61,0.10);
+  }
+  .option.wrong .letter{ background: var(--danger); color:white; border-color:var(--danger);}
+  .option.disabled{ cursor:default; }
+
+  .fill-input-wrap{ margin-bottom: 6px; }
+  input.fill-answer{
+    width:100%;
+    font-size: 17px;
+    padding: 13px 14px;
+    border-radius: 10px;
+    border: 2px solid #d8cfb8;
+    background: var(--cream);
+    font-family: inherit;
+  }
+  input.fill-answer:focus{ outline:none; border-color: var(--teal);}
+  input.fill-answer.correct{ border-color: var(--good); background: rgba(27,122,74,0.10); }
+  input.fill-answer.wrong{ border-color: var(--danger); background: rgba(176,69,61,0.10); }
+  .fill-hint{
+    font-size: 12px;
+    color: var(--muted);
+    font-family: Arial, sans-serif;
+    margin-top: 6px;
+  }
+  .feedback-line{
+    margin-top: 12px;
+    font-size: 13.5px;
+    font-family: Arial, sans-serif;
+    padding: 10px 12px;
+    border-radius: 8px;
+    display:none;
+  }
+  .feedback-line.show{ display:block; }
+  .feedback-line.good{ background: rgba(27,122,74,0.12); color: var(--good); }
+  .feedback-line.bad{ background: rgba(176,69,61,0.10); color: var(--danger); }
+
+  .nav-row{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    margin-top: 24px;
+  }
+  .nav-hint{
+    font-size: 12px;
+    color: var(--muted);
+    font-family: Arial, sans-serif;
+  }
+
+  /* ---- Results screen ---- */
+  .result-hero{
+    text-align:center;
+    padding: 10px 0 20px;
+  }
+  .result-score{
+    font-size: 52px;
+    font-weight:bold;
+    color: var(--navy);
+    font-family: 'Trajan Pro','Cinzel','Georgia',serif;
+  }
+  .result-frac{
+    font-size: 16px;
+    color: var(--muted);
+    font-family: Arial, sans-serif;
+    margin-top: 2px;
+  }
+  .result-remark{
+    margin-top: 10px;
+    font-size: 15px;
+    color: var(--teal);
+    font-weight:bold;
+  }
+  .breakdown{
+    margin-top: 22px;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .breakdown .item{
+    background: var(--cream);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 13px;
+    font-family: Arial, sans-serif;
+  }
+  .breakdown .item .k{ color: var(--muted); font-size: 11px; text-transform:uppercase; letter-spacing:0.5px;}
+  .breakdown .item .v{ font-weight:bold; color: var(--navy); font-size: 15px; margin-top:2px;}
+  .review-list{ margin-top: 26px; }
+  .review-item{
+    border-top: 1px solid #eadfc2;
+    padding: 14px 0;
+    font-size: 14px;
+  }
+  .review-item .rq{ font-weight:bold; color: var(--navy-deep); margin-bottom:6px; }
+  .review-item .ra{ font-family: Arial, sans-serif; font-size: 13px; }
+  .review-item .ra.wrong-tag{ color: var(--danger); }
+  .review-item .ra.good-tag{ color: var(--good); }
+  .footer-actions{
+    margin-top: 26px;
+    display:flex;
+    gap: 10px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .hidden{ display:none !important; }
+  @media (max-width:480px){
+    .card{padding: 22px 16px;}
+    .q-text{font-size:17px;}
+    .breakdown{grid-template-columns: 1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="masthead">
+    <div class="glyph-row">Araling Panlipunan 8</div>
+    <h1>AP8 Quiz</h1>
+    <p>by K. Rocero &middot; Minoan &bull; Mycenaean &bull; Olmec &bull; Maya &bull; Aztec &bull; Inca</p>
+  </div>
+
+  <!-- LANDING SCREEN -->
+  <div class="card" id="screen-landing">
+    <span class="field-label">Buong Pangalan (Complete Name)</span>
+    <input type="text" id="studentName" placeholder="hal. Juan D. Dela Cruz" autocomplete="off">
+    <div class="error-msg" id="nameError">Pakisulat ang iyong buong pangalan bago magsimula.</div>
+
+    <div class="coverage-box">
+      <b>Saklaw:</b> Minoan, Mycenaean, Olmec, Maya, Aztec, at Inca Civilizations<br>
+      <b>Bilang ng Tanong:</b> 35 (30 Multiple Choice + 5 Fill in the Blank)<br>
+      <b>Paalala:</b> Random ang pagkakasunod-sunod ng tanong at pagpipilian sa bawat pagsagot.
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" id="startBtn">Simulan ang Pagsusulit &rarr;</button>
+    </div>
+  </div>
+
+  <!-- QUIZ SCREEN -->
+  <div class="card hidden" id="screen-quiz">
+    <div class="progress-wrap">
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-label" id="progressLabel">1 / 35</div>
+    </div>
+    <div id="qTypeTag" class="q-type-tag tag-mcq">Multiple Choice</div>
+    <div class="q-topic" id="qTopic">MINOAN</div>
+    <div class="q-text" id="qText">Tanong dito</div>
+
+    <div id="mcqOptions" class="options"></div>
+
+    <div id="fillWrap" class="hidden">
+      <div class="fill-input-wrap">
+        <input type="text" class="fill-answer" id="fillInput" placeholder="Isulat ang sagot dito..." autocomplete="off">
+      </div>
+      <div class="fill-hint">Hindi bibilangin ang malaki/maliit na letra sa pagwawasto.</div>
+    </div>
+
+    <div class="feedback-line" id="feedbackLine"></div>
+
+    <div class="nav-row">
+      <span class="nav-hint" id="navHint">Pumili ng sagot para magpatuloy</span>
+      <button class="btn btn-primary" id="nextBtn" disabled>Susunod &rarr;</button>
+    </div>
+  </div>
+
+  <!-- RESULTS SCREEN -->
+  <div class="card hidden" id="screen-results">
+    <div class="result-hero">
+      <div class="result-score" id="resultScore">0%</div>
+      <div class="result-frac" id="resultFrac">0 out of 35 na tama</div>
+      <div class="result-remark" id="resultRemark"></div>
+    </div>
+
+    <div class="breakdown">
+      <div class="item"><div class="k">Pangalan</div><div class="v" id="rName">-</div></div>
+      <div class="item"><div class="k">Activity</div><div class="v">AP8 Quiz by K. Rocero</div></div>
+      <div class="item"><div class="k">Multiple Choice</div><div class="v" id="rMcq">0/30</div></div>
+      <div class="item"><div class="k">Fill in the Blank</div><div class="v" id="rFill">0/5</div></div>
+    </div>
+
+    <div class="review-list" id="reviewList"></div>
+
+    <div class="footer-actions">
+      <button class="btn btn-gold" id="retakeBtn">Ulitin ang Pagsusulit</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ================== QUESTION BANK ================== */
+/* Each MCQ: { type:'mcq', topic, q, options:[{text, correct}] } */
+/* Each FILL: { type:'fill', topic, q, answers:[accepted strings] } */
+
+const QUESTION_BANK = [
+// ---------------- MINOAN ----------------
+{
+  type:'mcq', topic:'Minoan',
+  q:'Ano ang pangunahing pagkakaiba ng kabihasnang Minoan kumpara sa Mesopotamia, Indus Valley, Egypt, at Shang?',
+  options:[
+    {text:'Nakasentro sa dagat ang kabuhayan ng Minoan, samantalang nakasalalay sa ilog ang iba.', correct:true},
+    {text:'Nakasentro sa relihiyon ang Minoan, samantalang nakasalalay sa hukbo ang iba.', correct:false},
+    {text:'Nakasentro sa pagmimina ang Minoan, samantalang nakasalalay sa kalakalan ang iba.', correct:false},
+    {text:'Nakasentro sa kabundukan ang Minoan, samantalang nakasalalay sa disyerto ang iba.', correct:false},
+  ]
+},
+{
+  type:'mcq', topic:'Minoan',
+  q:'Ano ang nagbibigay-patunay sa kagalingan ng mga Minoan sa larangan ng sining at disenyo?',
+  options:[
+    {text:'Ang pagtatayo nila ng templo sa bawat lungsod na kanilang nasakop.', correct:false},
+    {text:'Ang paggamit nila ng selyo na may disenyo sa kanilang pakikipagkalakalan.', correct:true},
+    {text:'Ang pagsasagawa nila ng ritwal na paghahandog ng hayop sa mga diyos.', correct:false},
+    {text:'Ang pagpapatayo nila ng malalaking pader upang ipagtanggol ang isla.', correct:false},
+  ]
+},
+{
+  type:'mcq', topic:'Minoan',
+  q:'Bakit naging mahalaga ang Crete sa kalakalan noong panahon ng mga Minoan?',
+  options:[
+    {text:'Sapagkat malapit ito sa mga ilog na Nile at Tigris na daanan ng mga mangangalakal.', correct:false},
+    {text:'Sapagkat doon unang nanirahan ang mga Aryan bago pa man kumalat sa Europa.', correct:false},
+    {text:'Sapagkat ito ang lokasyon kung saan itinatag ang unang lungsod-estado sa daigdig.', correct:false},
+    {text:'Sapagkat estratehiko ang lokasyon nito sa dagat kaya nagsilbi itong sentro ng ugnayan.', correct:true},
+  ]
+},
+{
+  type:'mcq', topic:'Minoan',
+  q:'Ano ang pinaniniwalaang malaking dahilan ng pagbagsak ng kabihasnang Minoan?',
+  options:[
+    {text:'Ang matinding pagsabog ng bulkan na nakaapekto sa kanilang isla at ekonomiya.', correct:true},
+    {text:'Ang biglaang pagtaas ng buwis na ipinataw sa mga karaniwang mamamayan.', correct:false},
+    {text:'Ang pagkakahati-hati ng kapangyarihan sa maraming munting nayon.', correct:false},
+    {text:'Ang pagkasira ng kanilang sistema ng irigasyon sa pagsasaka.', correct:false},
+  ]
+},
+{
+  type:'mcq', topic:'Minoan',
+  q:'Kanino direktang ipinangalan ang kabihasnang Minoan?',
+  options:[
+    {text:'Kay Zeus, ang pinuno ng mga diyos sa mitolohiyang Griyego.', correct:false},
+    {text:'Kay Agamemnon, ang haring pinuno ng mga Griyego sa Trojan War.', correct:false},
+    {text:'Kay Haring Minos, ang alamat na pinuno ng sinaunang Crete.', correct:true},
+    {text:'Sa mga Dorian, ang pangkat na sumakop sa Gresya matapos ang Mycenaean.', correct:false},
+  ]
+},
+// ---------------- MYCENAEAN / ANCIENT GREECE ----------------
+{
+  type:'mcq', topic:'Mycenaean',
+  q:'Bakit itinayo sa mataas at matibay na lugar ang mga tanggulan ng mga Mycenaean?',
+  options:[
+    {text:'Upang mas madaling makapangalap ng pagkain mula sa kabundukan.', correct:false},
+    {text:'Upang higit na mapangalagaan at maprotektahan ang kanilang pamayanan.', correct:true},
+    {text:'Upang mas malapit sila sa mga templong itinayo para sa kanilang mga diyos.', correct:false},
+    {text:'Upang mas maganda ang tanawin ng kanilang hari mula sa palasyo.', correct:false},
+  ]
+},
+{
+  type:'mcq', topic:'Mycenaean',
+  q:'Ano ang ipinahihiwatig ng pagkakaroon ng mga Cyclopean Walls sa mga sentrong Mycenaean?',
+  options:[
+    {text:'Handa silang harapin ang banta ng digmaan o pananakop sa kanilang lugar.', correct:true},
+    {text:'Sagrado sa kanila ang mga bato kaya ginawa nila itong dambana.', correct:false},
+    {text:'Maunlad sila sa agrikultura kaya kailangan ng malaking imbakan.', correct:false},
+    {text:'Malapit sila sa dagat kaya kailangan ng harang sa alon.', correct:false},
+  ]
+},
+{
+  type:'mcq', topic:'Mycenaean',
+  q:'Paano naipapakita ang impluwensya ng mga Minoan sa mga Mycenaean?',
+  options:[
+    {text:'Sa pamamagitan ng paggamit nila ng mga selyong may disenyong katulad ng Minoan.', correct:true},
+    {text:'Sa pamamagitan ng pagtatayo nila ng piramide na kagaya ng sa Egypt.', correct:false},
+    {text:'Sa pamamagitan ng paggamit nila ng kalendaryong 365 araw ang haba.', correct:false},
+    {text:'Sa pamamagitan ng pagsamba nila sa diyos na si Kukulkan.', correct:false},
+  ]
+},
+{
+  type:'mcq', topic:'Mycenaean',
+  q:'Ano ang naipapakita ng matibay na tanggulan at organisadong lungsod-estado ng mga Mycenaean?',
+  options:[
+    {text:'Sila ay isang mapayapang lipunan na walang kinatatakutang kaaway.', correct:false},
+    {text:'Wala silang katutubong sining at kultura na maituturing na sarili.', correct:false},
+    {text:'Maayos ang kanilang pamamahala at ugnayang panlipunan sa isa\'t isa.', correct:true},
+    {text:'Nakasentro lamang sa pagsasaka ang buong lipunang Mycenaean.', correct:false},
+  ]
+},
+{
+  type:'mcq', topic:'Mycenaean',
+  q:'Bakit itinuturing na mahalaga si Homer sa pag-aaral ng panahong Mycenaean?',
+  options:[
+    {text:'Sapagkat siya ang unang haring nagtayo ng lungsod ng Mycenae.', correct:false},
+    {text:'Sapagkat isinulat niya ang Iliad na naglalaman ng mga kwento tungkol sa panahong ito.', correct:true},
+    {text:'Sapagkat siya ang gumawa ng sistemang pagsulat na Linear B.', correct:false},
+    {text:'Sapagkat siya ang pinuno ng mga Griyego noong Trojan War.', correct:false},
+  ]
+},
+// ---------------- OLMEC ----------------
+{
+  type:'mcq', topic:'Olmec',
+  q:'Bakit tinatawag na "Mother Culture" ang mga Olmec?',
+  options:[
+    {text:'Sapagkat sila ang may pinakamaraming lungsod sa buong Mesoamerica.', correct:false},
+    {text:'Sapagkat sila ang unang gumawa ng mga palasyo sa kasaysayan.', correct:false},
+    {text:'Sapagkat naimpluwensiyahan nila ang mga kulturang sumunod sa kanila.', correct:true},
+    {text:'Sapagkat sila ang may pinakamalawak na sakop na lupain noon.', correct:false},
+  ]
+},
+{
+  type:'mcq', topic:'Olmec',
+  q:'Paano nakatulong ang kalendaryo ng mga Olmec sa kanilang pamumuhay?',
+  options:[
+    {text:'Bilang batayan sa disenyo ng kanilang mga dambuhalang estruktura.', correct:false},
+    {text:'Bilang gabay sa pagtukoy ng tamang panahon ng pagtatanim.', correct:true},
+    {text:'Upang matukoy kung kailan ipapatupad ang mga batas ng hari.', correct:false},
+    {text:'Upang maitala ang mahahalagang araw ng kanilang mga kapistahan.', correct:false},
+  ]
+},
+{
+  type:'mcq', topic:'Olmec',
+  q:'Alin sa mga sumusunod ang malinaw na halimbawa ng ritwal sa kulturang Olmec?',
+  options:[
+    {text:'Ang pagpapatayo ng silid-dalanginan para sa kanilang mga diyos.', correct:false},
+    {text:'Ang pag-aalay ng hayop sa mga ilog tuwing panahon ng tagtuyot.', correct:false},
+    {text:'Ang paggamit ng pok-a-tok bilang bahagi ng seremonyang panrelihiyon.', correct:true},
+    {text:'Ang pagpapalayas ng masasamang espiritu sa pamamagitan ng dasal.', correct:false},
+  ]
+},
+{
+  type:'mcq', topic:'Olmec',
+  q:'Bakit itinuturing na kahanga-hanga ang pagbuo ng colossal heads ng mga Olmec noong sinaunang panahon?',
+  options:[
+    {text:'Sapagkat ito ay nilikha ng isang pinunong may pambihirang lakas ng katawan.', correct:false},
+    {text:'Sapagkat naisakatuparan ito kahit wala silang modernong kasangkapan.', correct:true},
+    {text:'Sapagkat ginamitan nila ito ng makabagong kagamitan at teknolohiya.', correct:false},
+    {text:'Sapagkat ang mga bato ay inukit sa lugar na malapit sa kanilang tirahan.', correct:false},
+  ]
+},
+{
+  type:'mcq', topic:'Olmec',
+  q:'Anong aspeto ng katalinuhan ng mga Olmec ang naipapakita ng Cascajal Block?',
+  options:[
+    {text:'Ang kanilang kaalaman sa pagpaplano ng lungsod at sistemang agrikultural.', correct:false},
+    {text:'Ang kanilang kasanayan sa pagsasagawa ng seremonyang panrelihiyon.', correct:false},
+    {text:'Ang kanilang kakayahan sa pagdidisenyo ng matitibay na estruktura.', correct:false},
+    {text:'Ang kanilang kakayahang ipahayag ang kaisipan sa pamamagitan ng simbolo.', correct:true},
+  ]
+},
+// ---------------- MAYA ----------------
+{
+  type:'mcq', topic:'Maya',
+  q:'Ano ang tawag sa 365-araw na kalendaryo na ginamit ng mga Maya?',
+  options:[
+    {text:'Ang kalendaryong tinatawag na Haab.', correct:true},
+    {text:'Ang kalendaryong tinatawag na Tzolk\'in.', correct:false},
+    {text:'Ang kalendaryong tinatawag na Codex.', correct:false},
+    {text:'Ang kalendaryong tinatawag na Tikal.', correct:false},
+  ]
+},
+{
+  type:'mcq', topic:'Maya',
+  q:'Sino sa mga sumusunod ang tinaguriang "Feathered Serpent God" ng mga Maya?',
+  options:[
+    {text:'Ang diyos na kilala sa tawag na Chaac.', correct:false},
+    {text:'Ang diyos na kilala sa tawag na Itzamna.', correct:false},
+    {text:'Ang diyos na kilala sa tawag na Kukulkan.', correct:true},
+    {text:'Ang diyos na kilala sa tawag na Ah Puch.', correct:false},
+  ]
+},
+{
+  type:'mcq', topic:'Maya',
+  q:'Anong elemento ng kalikasan ang malapit na iniuugnay sa diyos na si Chaac?',
+  options:[
+    {text:'Ang elementong tubig o ulan na mahalaga sa pagsasaka.', correct:true},
+    {text:'Ang elementong apoy na ginagamit sa mga seremonya.', correct:false},
+    {text:'Ang elementong hangin na dala ng bagyo sa dagat.', correct:false},
+    {text:'Ang elementong lupa na siyang batayan ng agrikultura.', correct:false},
+  ]
+},
+{
+  type:'mcq', topic:'Maya',
+  q:'Kung ginamit ng mga Maya ang mga glyph para sa komunikasyon, ano ang katumbas nito sa kasalukuyang panahon?',
+  options:[
+    {text:'Katulad ng mga batas at alituntunin na ipinapatupad ng gobyerno.', correct:false},
+    {text:'Katulad ng mga digital emoji at abbreviation na ginagamit sa pagmemensahe.', correct:true},
+    {text:'Katulad ng mga resetang pagkain na isinusulat sa aklat.', correct:false},
+    {text:'Katulad ng mga liham na isinusulat ng kabataan sa kanilang magulang.', correct:false},
+  ]
+},
+{
+  type:'mcq', topic:'Maya',
+  q:'Bakit sinasabing mataas ang antas ng kaalaman sa agham ng mga Maya?',
+  options:[
+    {text:'Sapagkat umaasa lamang sila sa sinasabi ng mga paring nangunguna sa kanila.', correct:false},
+    {text:'Sapagkat naiuugnay nila ang kaalaman sa astronomiya sa kanilang kalendaryo.', correct:true},
+    {text:'Sapagkat gusto nilang kilalanin ng ibang lahi bilang pinakamatalino.', correct:false},
+    {text:'Sapagkat mayroon silang mga makabagong kagamitan noong panahong iyon.', correct:false},
+  ]
+},
+// ---------------- AZTEC ----------------
+{
+  type:'mcq', topic:'Aztec',
+  q:'Bakit mahalaga ang paggamit ng chinampas sa agrikultura ng mga Aztec?',
+  options:[
+    {text:'Sapagkat nagpapalakas ito ng ulan sa panahon ng pagtatanim.', correct:false},
+    {text:'Sapagkat nakapagpapalawak ito ng lupang maaaring tamnan ng mga pananim.', correct:true},
+    {text:'Sapagkat nagbibigay ito ng masaganang ani kahit sa tuyong lupa.', correct:false},
+    {text:'Sapagkat nagpapalalim ito sa ilog na ginagamit sa irigasyon.', correct:false},
+  ]
+},
+{
+  type:'mcq', topic:'Aztec',
+  q:'Saan karaniwang ginamit ng mga Aztec ang batong bulkaniko na tinatawag na obsidian?',
+  options:[
+    {text:'Bilang pang-ukit sa dingding ng kanilang mga bahay.', correct:false},
+    {text:'Bilang panahi ng kanilang mga kasuotan sa araw-araw.', correct:false},
+    {text:'Bilang panghiwa sa mga bagay-bagay tulad ng sa kanilang mga ritwal.', correct:true},
+    {text:'Bilang panggupit ng mga halamang gamot na kanilang tinatanim.', correct:false},
+  ]
+},
+{
+  type:'mcq', topic:'Aztec',
+  q:'Aling salita ang nagmula sa katagang Nahuatl na "xocolatl" na ginagamit ng mga Aztec?',
+  options:[
+    {text:'Ang salitang "chipotle" na ginagamit sa pagluluto.', correct:false},
+    {text:'Ang salitang "chayote" na tumutukoy sa isang uri ng gulay.', correct:false},
+    {text:'Ang salitang "chimichurri" na tumutukoy sa isang uri ng sarsa.', correct:false},
+    {text:'Ang salitang "chocolate" na kilala sa buong mundo sa ngayon.', correct:true},
+  ]
+},
+{
+  type:'mcq', topic:'Aztec',
+  q:'Bakit hindi agad nilabanan ni Emperador Moctezuma II si Hernan Cortes nang dumating ito sa Tenochtitlan?',
+  options:[
+    {text:'Sapagkat inakala nilang si Cortes ay ang bumabalik na diyos na si Quetzalcoatl.', correct:true},
+    {text:'Sapagkat tinulungan ni Cortes ang mga Aztec laban sa kanilang mga kalaban.', correct:false},
+    {text:'Sapagkat nagdala si Cortes ng gintong alay para sa emperador.', correct:false},
+    {text:'Sapagkat nagpakilala si Cortes bilang alyado ng diyos na si Tlaloc.', correct:false},
+  ]
+},
+{
+  type:'mcq', topic:'Aztec',
+  q:'Bakit sina Huitzilopochtli at Tlaloc ang piniling mga diyos para sa Templo Mayor ng mga Aztec?',
+  options:[
+    {text:'Sapagkat sila ang tagapangalaga ng gabi at apoy sa palibot ng mga bundok.', correct:false},
+    {text:'Sapagkat sila ay kumakatawan sa digmaan at sa ulan, dalawang bagay na mahalaga sa kanilang kaligtasan.', correct:true},
+    {text:'Sapagkat sila lamang ang mga diyos na naniniwala ang mga pari sa panalangin.', correct:false},
+    {text:'Sapagkat sila ang tagapangalaga ng hangin at liwanag ng mga mandirigma.', correct:false},
+  ]
+},
+// ---------------- INCA ----------------
+{
+  type:'mcq', topic:'Inca',
+  q:'Sino ang tawag sa pinakamataas na pinuno ng Imperyong Inca?',
+  options:[
+    {text:'Siya ay tinatawag na Sapa Inca.', correct:true},
+    {text:'Siya ay tinatawag na Chasqui.', correct:false},
+    {text:'Siya ay tinatawag na Halach Uinic.', correct:false},
+    {text:'Siya ay tinatawag na Tlacaelel.', correct:false},
+  ]
+},
+{
+  type:'mcq', topic:'Inca',
+  q:'Ano ang tawag sa buong Imperyo ng mga Inca?',
+  options:[
+    {text:'Ito ay tinatawag na Collasuyu.', correct:false},
+    {text:'Ito ay tinatawag na Tahuantinsuyu.', correct:true},
+    {text:'Ito ay tinatawag na Antisuyu.', correct:false},
+    {text:'Ito ay tinatawag na Cuzco.', correct:false},
+  ]
+},
+{
+  type:'mcq', topic:'Inca',
+  q:'Ano ang Machu Picchu na kilala bilang "Lost City of the Incas"?',
+  options:[
+    {text:'Ito ay ang kabiserang lungsod kung saan nakatira ang Sapa Inca.', correct:false},
+    {text:'Ito ay ang malaking dambana kung saan ginaganap ang mga seremonya.', correct:false},
+    {text:'Ito ay ang sinaunang lungsod na matatagpuan sa tuktok ng kabundukan.', correct:true},
+    {text:'Ito ay ang lungsod kung saan itinuturing na ipinanganak ang unang Inca.', correct:false},
+  ]
+},
+{
+  type:'mcq', topic:'Inca',
+  q:'Ano ang quipu na ginamit ng mga sinaunang Inca?',
+  options:[
+    {text:'Isang sistema ng pagtatala gamit ang mga buhol at tali para sa bilang at mensahe.', correct:true},
+    {text:'Isang uri ng kalsadang bato na dumadaan sa buong imperyo.', correct:false},
+    {text:'Isang klaseng damit na suot lamang ng mga maharlika.', correct:false},
+    {text:'Isang uri ng armas na ginamit sa pagdepensa ng imperyo.', correct:false},
+  ]
+},
+{
+  type:'mcq', topic:'Inca',
+  q:'Sino ang Espanyol na mananakop na responsable sa pagbagsak ng Imperyong Inca noong 1532?',
+  options:[
+    {text:'Siya ay si Hernan Cortes, ang mananakop ng Tenochtitlan.', correct:false},
+    {text:'Siya ay si Francisco Pizarro, na sumakop sa imperyo noong taong iyon.', correct:true},
+    {text:'Siya ay si Manco Capac, ang itinuturing na unang emperador.', correct:false},
+    {text:'Siya ay si Tlacaelel, ang tagapayo ng mga Aztec.', correct:false},
+  ]
+},
+
+// ================== FILL IN THE BLANK (5) ==================
+{
+  type:'fill', topic:'Minoan',
+  q:'Siya ang haring Griyego ng Crete na pinagmulan ng tawag sa kabihasnang Minoan.',
+  answers:['minos']
+},
+{
+  type:'fill', topic:'Mycenaean',
+  q:'Siya ang makatang Griyego na sumulat ng Iliad, akdang tumatalakay sa Trojan War.',
+  answers:['homer']
+},
+{
+  type:'fill', topic:'Maya',
+  q:'Ito ang lungsod na tanyag dahil sa piramideng El Castillo, may kaugnayan sa kalendaryo ng mga Maya.',
+  answers:['chichen itza','chichenitza']
+},
+{
+  type:'fill', topic:'Aztec',
+  q:'Ito ang lawa kung saan itinayo ang Tenochtitlan, ang kabiserang lungsod ng mga Aztec.',
+  answers:['texcoco','lawa ng texcoco','lake texcoco']
+},
+{
+  type:'fill', topic:'Inca',
+  q:'Ito ang sistema ng pagtatala ng mga Inca gamit ang mga buhol at tali para sa bilang at mensahe.',
+  answers:['quipu']
+},
+];
+
+/* ================== STATE ================== */
+let quizQuestions = [];
+let currentIndex = 0;
+let studentName = '';
+let userAnswers = [];  // { correct: bool, chosenText / typedText, correctText }
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+function buildQuiz(){
+  const shuffledQuestions = shuffle(QUESTION_BANK);
+  quizQuestions = shuffledQuestions.map(q=>{
+    if(q.type==='mcq'){
+      return {...q, options: shuffle(q.options)};
+    }
+    return q;
+  });
+  currentIndex = 0;
+  userAnswers = new Array(quizQuestions.length).fill(null);
+}
+
+/* ================== LANDING ================== */
+const screenLanding = document.getElementById('screen-landing');
+const screenQuiz = document.getElementById('screen-quiz');
+const screenResults = document.getElementById('screen-results');
+const nameInput = document.getElementById('studentName');
+const nameError = document.getElementById('nameError');
+
+document.getElementById('startBtn').addEventListener('click', ()=>{
+  const val = nameInput.value.trim();
+  if(val.length < 2){
+    nameError.style.display='block';
+    nameInput.focus();
+    return;
+  }
+  nameError.style.display='none';
+  studentName = val;
+  buildQuiz();
+  screenLanding.classList.add('hidden');
+  screenQuiz.classList.remove('hidden');
+  renderQuestion();
+});
+nameInput.addEventListener('keydown', e=>{ if(e.key==='Enter'){ document.getElementById('startBtn').click(); }});
+
+/* ================== QUIZ RENDER ================== */
+const progressFill = document.getElementById('progressFill');
+const progressLabel = document.getElementById('progressLabel');
+const qTypeTag = document.getElementById('qTypeTag');
+const qTopic = document.getElementById('qTopic');
+const qText = document.getElementById('qText');
+const mcqOptions = document.getElementById('mcqOptions');
+const fillWrap = document.getElementById('fillWrap');
+const fillInput = document.getElementById('fillInput');
+const feedbackLine = document.getElementById('feedbackLine');
+const nextBtn = document.getElementById('nextBtn');
+const navHint = document.getElementById('navHint');
+
+function renderQuestion(){
+  const q = quizQuestions[currentIndex];
+  const total = quizQuestions.length;
+  progressFill.style.width = ((currentIndex)/total*100)+'%';
+  progressLabel.textContent = (currentIndex+1)+' / '+total;
+
+  qTopic.textContent = q.topic.toUpperCase();
+  qText.textContent = (currentIndex+1)+'. '+q.q;
+  feedbackLine.className='feedback-line';
+  feedbackLine.textContent='';
+  nextBtn.disabled = true;
+  navHint.textContent = 'Pumili ng sagot para magpatuloy';
+
+  const already = userAnswers[currentIndex];
+
+  if(q.type==='mcq'){
+    qTypeTag.textContent = 'Multiple Choice';
+    qTypeTag.className = 'q-type-tag tag-mcq';
+    fillWrap.classList.add('hidden');
+    mcqOptions.classList.remove('hidden');
+    mcqOptions.innerHTML='';
+    const letters=['A','B','C','D'];
+    q.options.forEach((opt,idx)=>{
+      const div = document.createElement('div');
+      div.className='option';
+      div.innerHTML = '<div class="letter">'+letters[idx]+'</div><div class="opt-text">'+opt.text+'</div>';
+      div.addEventListener('click', ()=> selectMcqOption(idx));
+      mcqOptions.appendChild(div);
+    });
+    if(already){ applyMcqLockedState(already.chosenIdx); }
+  } else {
+    qTypeTag.textContent = 'Fill in the Blank';
+    qTypeTag.className = 'q-type-tag tag-fill';
+    mcqOptions.classList.add('hidden');
+    fillWrap.classList.remove('hidden');
+    fillInput.value='';
+    fillInput.className='fill-answer';
+    fillInput.disabled=false;
+    fillInput.focus();
+    if(already){
+      fillInput.value = already.typedText;
+      fillInput.disabled = true;
+      fillInput.className = 'fill-answer ' + (already.correct?'correct':'wrong');
+      showFeedback(already.correct, already.correctDisplay);
+      nextBtn.disabled=false;
+    }
+  }
+
+  nextBtn.textContent = (currentIndex===total-1) ? 'Tapusin ang Pagsusulit' : 'Susunod →';
+}
+
+function selectMcqOption(idx){
+  if(userAnswers[currentIndex]) return; // already answered
+  const q = quizQuestions[currentIndex];
+  const opts = mcqOptions.querySelectorAll('.option');
+  const chosen = q.options[idx];
+  const correctIdx = q.options.findIndex(o=>o.correct);
+
+  userAnswers[currentIndex] = {
+    correct: !!chosen.correct,
+    chosenIdx: idx,
+    chosenText: chosen.text,
+    correctText: q.options[correctIdx].text
+  };
+
+  applyMcqLockedState(idx);
+  showFeedback(chosen.correct, q.options[correctIdx].text);
+  nextBtn.disabled=false;
+}
+
+function applyMcqLockedState(chosenIdx){
+  const q = quizQuestions[currentIndex];
+  const opts = mcqOptions.querySelectorAll('.option');
+  const correctIdx = q.options.findIndex(o=>o.correct);
+  opts.forEach((el,idx)=>{
+    el.classList.add('disabled');
+    if(idx===correctIdx) el.classList.add('correct');
+    if(idx===chosenIdx && idx!==correctIdx) el.classList.add('wrong');
+    if(idx===chosenIdx) el.classList.add('selected');
+  });
+}
+
+fillInput.addEventListener('keydown', e=>{
+  if(e.key==='Enter'){ submitFillAnswer(); }
+});
+fillInput.addEventListener('blur', ()=>{
+  // allow click on Next without forcing submit; submission only via Enter or Next-check
+});
+
+function normalize(s){
+  return s.trim().toLowerCase().replace(/\s+/g,' ');
+}
+
+function submitFillAnswer(){
+  if(userAnswers[currentIndex]) return;
+  const q = quizQuestions[currentIndex];
+  const typed = fillInput.value.trim();
+  if(typed.length===0) return;
+  const isCorrect = q.answers.some(a=> normalize(a)===normalize(typed));
+
+  userAnswers[currentIndex] = {
+    correct:isCorrect,
+    typedText: typed,
+    correctDisplay: q.answers[0]
+  };
+
+  fillInput.disabled=true;
+  fillInput.className = 'fill-answer ' + (isCorrect?'correct':'wrong');
+  showFeedback(isCorrect, q.answers[0]);
+  nextBtn.disabled=false;
+}
+
+function showFeedback(isCorrect, correctText){
+  feedbackLine.classList.add('show');
+  if(isCorrect){
+    feedbackLine.classList.add('good');
+    feedbackLine.classList.remove('bad');
+    feedbackLine.textContent = '✓ Tama! ' + correctText;
+  } else {
+    feedbackLine.classList.add('bad');
+    feedbackLine.classList.remove('good');
+    feedbackLine.textContent = '✗ Mali. Tamang sagot: ' + correctText;
+  }
+}
+
+nextBtn.addEventListener('click', ()=>{
+  const q = quizQuestions[currentIndex];
+  if(!userAnswers[currentIndex]){
+    if(q.type==='fill'){
+      submitFillAnswer();
+      if(!userAnswers[currentIndex]) return; // blank input, don't advance
+    } else {
+      return;
+    }
+  }
+  if(currentIndex < quizQuestions.length-1){
+    currentIndex++;
+    renderQuestion();
+  } else {
+    showResults();
+  }
+});
+
+/* ================== RESULTS ================== */
+function showResults(){
+  screenQuiz.classList.add('hidden');
+  screenResults.classList.remove('hidden');
+
+  let mcqCorrect=0, mcqTotal=0, fillCorrect=0, fillTotal=0;
+  quizQuestions.forEach((q,idx)=>{
+    const ans = userAnswers[idx];
+    if(q.type==='mcq'){
+      mcqTotal++;
+      if(ans && ans.correct) mcqCorrect++;
+    } else {
+      fillTotal++;
+      if(ans && ans.correct) fillCorrect++;
+    }
+  });
+  const totalCorrect = mcqCorrect+fillCorrect;
+  const totalQ = mcqTotal+fillTotal;
+  const pct = Math.round((totalCorrect/totalQ)*100);
+
+  document.getElementById('resultScore').textContent = pct+'%';
+  document.getElementById('resultFrac').textContent = totalCorrect+' out of '+totalQ+' na tama';
+  document.getElementById('rName').textContent = studentName;
+  document.getElementById('rMcq').textContent = mcqCorrect+'/'+mcqTotal;
+  document.getElementById('rFill').textContent = fillCorrect+'/'+fillTotal;
+
+  let remark = '';
+  if(pct>=90) remark='Napakahusay! Master na master ang mga sinaunang kabihasnan!';
+  else if(pct>=75) remark='Magaling! Malinaw ang iyong pagkakaunawa sa aralin.';
+  else if(pct>=60) remark='Mahusay na simula. Balikan ang mga paksang napagkamalian.';
+  else remark='Ipagpatuloy ang pag-aaral. Balikan ang mga tala tungkol sa mga kabihasnan.';
+  document.getElementById('resultRemark').textContent = remark;
+
+  const reviewList = document.getElementById('reviewList');
+  reviewList.innerHTML='';
+  quizQuestions.forEach((q,idx)=>{
+    const ans = userAnswers[idx];
+    const div = document.createElement('div');
+    div.className='review-item';
+    const correctDisplay = q.type==='mcq' ? ans.correctText : q.answers[0];
+    const yourAnswer = q.type==='mcq' ? ans.chosenText : ans.typedText;
+    div.innerHTML = '<div class="rq">'+(idx+1)+'. ['+q.topic+'] '+q.q+'</div>'+
+      '<div class="ra '+(ans.correct?'good-tag':'wrong-tag')+'">Sagot mo: '+yourAnswer+(ans.correct?'':' — Tamang sagot: '+correctDisplay)+'</div>';
+    reviewList.appendChild(div);
+  });
+}
+
+document.getElementById('retakeBtn').addEventListener('click', ()=>{
+  screenResults.classList.add('hidden');
+  screenLanding.classList.remove('hidden');
+  nameInput.value = studentName;
+});
+</script>
+</body>
+</html>
